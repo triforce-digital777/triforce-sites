@@ -17,21 +17,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --primary: #4E8C1A;
-      --primary-dark: color-mix(in srgb, #4E8C1A 80%, black);
       --secondary: #F0F0F0;
-      --dark: #0f0f1a;
-      --dark2: #1a1a2e;
-      --dark3: #16213e;
-      --text: #e0e0e0;
-      --text-muted: #9090a0;
-      --white: #ffffff;
-      --radius: 12px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.18);
+      --dark: #0f0f1a; --dark2: #1a1a2e; --dark3: #16213e;
+      --text: #e0e0e0; --text-muted: #9090a0; --white: #ffffff;
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,0.18);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); line-height: 1.7; }
-
-    /* ========== UTILITY ========== */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .section { padding: 96px 0; }
     .section-label { display: inline-block; background: color-mix(in srgb, #4E8C1A 15%, transparent); border: 1px solid color-mix(in srgb, #4E8C1A 40%, transparent); color: var(--primary); padding: 5px 16px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
@@ -41,130 +33,67 @@
     .section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin-bottom: 56px; line-height: 1.8; }
     .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
     .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 24px color-mix(in srgb, #4E8C1A 35%, transparent); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
     .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
     .btn-outline:hover { background: color-mix(in srgb, #4E8C1A 12%, transparent); }
     .btn-ghost { color: var(--text-muted); background: transparent; padding: 14px 24px; }
-    .btn-ghost:hover { color: var(--white); }
-
-    /* ========== HEADER ========== */
     header { position: sticky; top: 0; z-index: 1000; background: rgba(15,15,26,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
-    .header-phone { color: var(--text); font-size: 0.88rem; font-weight: 500; text-decoration: none; margin-right: 8px; display: flex; align-items: center; gap: 6px; }
+    .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary); text-decoration: none; }
+    .header-phone { color: var(--text); font-size: 0.88rem; font-weight: 500; text-decoration: none; margin-right: 8px; }
     .header-phone:hover { color: var(--primary); }
     nav.desktop-nav { display: flex; gap: 32px; }
-    nav.desktop-nav a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; position: relative; padding-bottom: 2px; }
-    nav.desktop-nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.2s; }
+    nav.desktop-nav a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     nav.desktop-nav a:hover { color: var(--primary); }
-    nav.desktop-nav a:hover::after { width: 100%; }
     .header-right { display: flex; align-items: center; gap: 12px; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
     .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 999; padding: 24px; flex-direction: column; gap: 4px; }
     .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1rem; padding: 12px 16px; border-radius: 8px; transition: background 0.2s; }
     .mobile-menu a:hover { background: rgba(255,255,255,0.06); color: var(--primary); }
     .mobile-menu .btn { text-align: center; margin-top: 8px; }
     .mobile-menu.open { display: flex; }
-    @media(max-width: 900px) { nav.desktop-nav { display: none; } .hamburger { display: flex; } .header-phone { display: none; } }
-
-    /* ========== HERO (HOME PAGE) ========== */
-    #home { min-height: 92vh; display: flex; align-items: center; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/83ac7b1b2_generated_image.png') center/cover no-repeat; }
-    #home::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, #4E8C1A 18%, transparent) 0%, transparent 70%); pointer-events: none; }
-    .hero-inner { position: relative; z-index: 1; padding: 80px 24px; }
-    .hero-badge { display: inline-block; background: color-mix(in srgb, #4E8C1A 15%, transparent); border: 1px solid color-mix(in srgb, #4E8C1A 40%, transparent); color: var(--primary); padding: 7px 18px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
-    #home h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; color: var(--white); margin-bottom: 24px; line-height: 1.15; max-width: 900px; margin-left: auto; margin-right: auto; }
-    #home h1 span { color: var(--primary); }
-    .hero-sub { font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(224,224,224,0.85); max-width: 650px; margin: 0 auto 40px; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .hero-scroll { margin-top: 64px; color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .scroll-arrow { width: 24px; height: 24px; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: rotate(45deg); display: inline-block; }
-
-    /* ========== TRUST BAR ========== */
+    @media(max-width:900px){ nav.desktop-nav{display:none;} .hamburger{display:flex;} .header-phone{display:none;} }
     .trust-bar { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 40px 0; }
     .trust-inner { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
     .stat-item { text-align: center; }
     .stat-number { display: block; font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--primary); }
-    .stat-label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.5px; }
-
-    /* ========== VALUE PROPOSITION ========== */
-    #value-prop { background: var(--dark); }
+    .stat-label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
     .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
     .value-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); padding: 32px 24px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
     .value-card:hover { border-color: var(--primary); transform: translateY(-4px); }
     .value-icon { font-size: 2.5rem; margin-bottom: 16px; }
     .value-card h3 { font-size: 1rem; margin-bottom: 10px; }
     .value-card p { color: var(--text-muted); font-size: 0.9rem; }
-
-    /* ========== SERVICES (HOME OVERVIEW) ========== */
-    #services-overview { background: var(--dark2); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
     .service-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
     .service-card:hover { border-color: var(--primary); transform: translateY(-4px); }
-    .service-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .service-img { width: 100%; height: 200px; object-fit: cover; }
     .service-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
     .service-card-body h3 { color: var(--primary); margin-bottom: 10px; }
     .service-card-body p { color: var(--text-muted); font-size: 0.92rem; flex: 1; margin-bottom: 20px; }
     .card-cta { color: var(--primary); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
-    .card-cta:hover { text-decoration: underline; }
-
-    /* ========== VIDEO/VISUAL PROOF ========== */
-    #visual-proof { background: var(--dark); }
-    .video-wrapper { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); overflow: hidden; max-width: 800px; margin: 0 auto; }
-    .video-placeholder { width: 100%; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--dark3); }
-    .play-btn { width: 72px; height: 72px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .play-btn::after { content: ''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 6px; }
-
-    /* ========== ABOUT/AUTHORITY ========== */
-    #about { background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/3c1237778_generated_image.png') center/cover no-repeat; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-img-wrap { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-    .about-img-wrap img { width: 100%; height: 480px; object-fit: cover; display: block; }
-    .about-content h2 { margin-bottom: 20px; }
-    .about-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-img-wrap { border-radius: var(--radius); overflow: hidden; }
+    .about-img-wrap img { width: 100%; height: 440px; object-fit: cover; display: block; }
     .about-list { list-style: none; margin-bottom: 32px; }
     .about-list li { color: var(--text); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
     .about-list li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
-    @media(max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-    /* ========== TEAM ========== */
-    #team { background: var(--dark2); }
+    @media(max-width:768px){ .about-grid { grid-template-columns: 1fr; gap: 40px; } }
     .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
-    .team-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); overflow: hidden; text-align: center; transition: border-color 0.2s; }
-    .team-card:hover { border-color: var(--primary); }
+    .team-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); overflow: hidden; text-align: center; }
     .team-card img { width: 100%; height: 240px; object-fit: cover; }
     .team-info { padding: 20px; }
-    .team-info h3 { margin-bottom: 4px; }
     .team-info span { color: var(--primary); font-size: 0.85rem; font-weight: 600; }
-
-    /* ========== TESTIMONIALS ========== */
-    #testimonials { background: var(--dark); }
     .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
     .testimonial-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
     .testimonial-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
-    .stars { color: var(--secondary); font-size: 1rem; letter-spacing: 2px; }
+    .stars { color: var(--secondary); font-size: 1rem; }
     .testimonial-text { color: var(--text); font-size: 0.95rem; line-height: 1.8; font-style: italic; flex: 1; }
     .testimonial-card cite { color: var(--primary); font-size: 0.85rem; font-weight: 600; font-style: normal; }
-
-    /* ========== MID-PAGE CTA ========== */
-    .mid-cta { background: linear-gradient(135deg, var(--dark3) 0%, var(--dark2) 100%); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 64px 0; text-align: center; }
-    .mid-cta h2 { margin-bottom: 16px; }
+    .mid-cta { background: linear-gradient(135deg, var(--dark3), var(--dark2)); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 72px 0; text-align: center; }
     .mid-cta p { color: var(--text-muted); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-
-    /* ========== ABOUT PAGE ========== */
-    #about-page { background: var(--dark); }
-    #about-page .page-hero { text-align: center; padding: 80px 0 48px; }
-    #about-page .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 64px; }
-    #about-page .overview-img img { width: 100%; border-radius: var(--radius); }
-    #about-page .history-section { background: var(--dark2); border-radius: var(--radius); padding: 48px; margin-bottom: 64px; }
-    #about-page .quick-nav { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 64px; }
-    #about-page .quick-nav a { background: var(--dark2); border: 1px solid rgba(255,255,255,0.1); color: var(--text); text-decoration: none; padding: 12px 24px; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s; }
-    #about-page .quick-nav a:hover { border-color: var(--primary); color: var(--primary); }
-    @media(max-width: 768px) { #about-page .overview-grid { grid-template-columns: 1fr; } }
-
-    /* ========== SERVICES PAGE ========== */
-    #services-page { background: var(--dark); }
-    #services-page .page-hero { text-align: center; padding: 80px 0 48px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .services-full-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 64px; }
     .service-full-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); overflow: hidden; transition: all 0.2s; }
     .service-full-card:hover { border-color: var(--primary); transform: translateY(-4px); }
@@ -172,13 +101,8 @@
     .service-full-card-body { padding: 28px; }
     .service-full-card-body h3 { color: var(--primary); margin-bottom: 12px; }
     .service-full-card-body p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px; line-height: 1.7; }
-
-    /* ========== CONTACT PAGE ========== */
-    #contact-page { background: var(--dark); }
-    #contact-page .page-hero { text-align: center; padding: 80px 0 48px; }
     .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 64px; }
     .contact-form-wrap { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 40px; }
-    .contact-form-wrap h3 { margin-bottom: 28px; }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
     .form-group label .req { color: var(--primary); }
@@ -187,23 +111,19 @@
     .form-group select option { background: var(--dark2); }
     .form-group textarea { resize: vertical; min-height: 130px; }
     .form-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
-    .contact-info-wrap h3 { margin-bottom: 28px; }
     .contact-info-items { display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; }
     .contact-info-item { display: flex; gap: 20px; align-items: flex-start; }
     .contact-icon { width: 48px; height: 48px; background: color-mix(in srgb, #4E8C1A 12%, transparent); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.3rem; }
-    .contact-info-item h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .contact-info-item h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; text-transform: uppercase; }
     .contact-info-item a, .contact-info-item p { color: var(--text); text-decoration: none; font-size: 0.98rem; }
     .contact-info-item a:hover { color: var(--primary); }
-    .map-placeholder { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); height: 300px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); margin-top: 8px; }
+    .map-placeholder { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); height: 300px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); }
     .map-placeholder p { color: var(--text-muted); font-size: 0.9rem; }
-    @media(max-width: 768px) { .contact-layout { grid-template-columns: 1fr; } }
-
-    /* ========== LEGAL PAGES ========== */
-    #privacy-page, #terms-page, #disclaimer-page { background: var(--dark); }
+    @media(max-width:768px){ .contact-layout{grid-template-columns:1fr;} }
     .legal-page-hero { text-align: center; padding: 80px 0 48px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.06); }
     .legal-content { max-width: 860px; margin: 0 auto; padding: 64px 24px; }
     .legal-content .last-updated { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .legal-content h2 { font-size: 1.5rem; margin: 40px 0 16px; color: var(--white); }
+    .legal-content h2 { font-size: 1.5rem; margin: 40px 0 16px; }
     .legal-content h3 { font-size: 1.1rem; color: var(--primary); margin: 24px 0 12px; }
     .legal-content p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem; line-height: 1.9; }
     .legal-content ul { color: var(--text-muted); margin: 0 0 16px 24px; }
@@ -212,8 +132,6 @@
     .legal-nav { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 32px 0; }
     .legal-nav a { background: var(--dark2); border: 1px solid rgba(255,255,255,0.1); color: var(--text); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.88rem; transition: all 0.2s; }
     .legal-nav a:hover, .legal-nav a.active { border-color: var(--primary); color: var(--primary); }
-
-    /* ========== FOOTER ========== */
     footer { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 0 0; }
     .footer-newsletter { background: color-mix(in srgb, #4E8C1A 10%, transparent); border: 1px solid color-mix(in srgb, #4E8C1A 25%, transparent); border-radius: var(--radius); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-bottom: 64px; flex-wrap: wrap; }
     .footer-newsletter h3 { font-size: 1.3rem; margin-bottom: 6px; }
@@ -222,7 +140,7 @@
     .newsletter-form input { background: var(--dark3); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 12px 16px; color: var(--white); font-size: 0.9rem; font-family: inherit; min-width: 240px; }
     .newsletter-form input:focus { outline: none; border-color: var(--primary); }
     .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand .logo { display: block; margin-bottom: 16px; font-size: 1.3rem; }
+    .footer-brand .logo { display: block; margin-bottom: 16px; }
     .footer-brand p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.8; max-width: 280px; margin-bottom: 24px; }
     .footer-social { display: flex; gap: 12px; flex-wrap: wrap; }
     .social-link { width: 38px; height: 38px; background: rgba(255,255,255,0.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
@@ -236,28 +154,24 @@
     .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-legal a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     .footer-legal a:hover { color: var(--primary); }
-    @media(max-width: 1024px) { .footer-main { grid-template-columns: 1fr 1fr; } }
-    @media(max-width: 600px) { .footer-main { grid-template-columns: 1fr; } .footer-newsletter { padding: 28px; } .footer-bottom { flex-direction: column; text-align: center; } }
-
-    /* ========== PAGE NAVIGATION ========== */
-    .page-nav { display: none; }
-    .page-nav.active { display: block; }
+    @media(max-width:1024px){ .footer-main{grid-template-columns:1fr 1fr;} }
+    @media(max-width:600px){ .footer-main{grid-template-columns:1fr;} .footer-newsletter{padding:28px;} .footer-bottom{flex-direction:column;text-align:center;} }
     .page-section { display: none; }
     .page-section.active { display: block; }
-
-    /* ========== BACK TO TOP ========== */
+    .video-placeholder { width: 100%; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--dark3); border-radius: var(--radius); }
+    .play-btn { width: 72px; height: 72px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .play-btn::after { content:''; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 6px; }
     #back-to-top { position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.3s; z-index: 999; border: none; color: white; font-size: 1.2rem; }
     #back-to-top.visible { opacity: 1; }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
   <div class="container">
     <div class="header-inner">
-      <a href="#" class="logo" onclick="showPage('home')" aria-label="CleanPro Services - Home">CleanPro Services</a>
-      <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#" class="logo" onclick="showPage('home')">CleanPro Services</a>
+      <nav class="desktop-nav">
         <a href="#" onclick="showPage('home')">Home</a>
         <a href="#" onclick="showPage('about')">About Us</a>
         <a href="#" onclick="showPage('services')">Services</a>
@@ -266,13 +180,11 @@
       <div class="header-right">
         <a href="tel:+63 917 123 4567" class="header-phone">📞 +63 917 123 4567</a>
         <a href="#" onclick="showPage('contact')" class="btn btn-primary" style="padding:10px 20px;font-size:0.85rem;">Get a Quote</a>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <nav class="mobile-menu" id="mobileMenu">
     <a href="#" onclick="showPage('home');closeMobile()">Home</a>
     <a href="#" onclick="showPage('about');closeMobile()">About Us</a>
     <a href="#" onclick="showPage('services');closeMobile()">Services</a>
@@ -282,146 +194,83 @@
   </nav>
 </header>
 
-<!-- ===== HOME PAGE ===== -->
+<!-- HOME PAGE -->
 <div id="page-home" class="page-section active">
-
-  <!-- HERO -->
-  <section id="home" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/83ac7b1b2_generated_image.png') center/cover no-repeat; min-height:92vh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, color-mix(in srgb, #4E8C1A 18%, transparent) 0%, transparent 70%);pointer-events:none;"></div>
+  <section style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/5cc24b3b1_generated_image.png') center/cover no-repeat; min-height:92vh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,#4E8C1A 18%,transparent) 0%,transparent 70%);pointer-events:none;"></div>
     <div class="container" style="position:relative;z-index:1;padding:80px 24px;">
-      <div class="hero-badge">🚀 Professional Cleaning Services Manila</div>
-      <h1>Your Trusted Professional Cleaning Services in Manila</h1>
-      <p class="hero-sub">Experience top-notch cleaning with our eco-friendly solutions. Designed for busy professionals and families in Metro Manila.</p>
-      <div class="hero-btns">
-        <a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a>
-        <a href="#" onclick="showPage('services')" class="btn btn-outline">Our Services</a>
-      </div>
+      <div style="display:inline-block;background:color-mix(in srgb,#4E8C1A 15%,transparent);border:1px solid color-mix(in srgb,#4E8C1A 40%,transparent);color:var(--primary);padding:7px 18px;border-radius:100px;font-size:0.82rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px;">🚀 Professional Cleaning Services Manila</div>
+      <h1 style="font-size:clamp(2.2rem,6vw,4rem);font-weight:900;color:var(--white);margin-bottom:24px;line-height:1.15;max-width:900px;margin-left:auto;margin-right:auto;">Your Trusted Professional Cleaning Services in Manila</h1>
+      <p style="font-size:clamp(1rem,2vw,1.25rem);color:rgba(224,224,224,0.85);max-width:650px;margin:0 auto 40px;">Experience top-notch cleaning with our eco-friendly solutions. Designed for busy professionals and families in Metro Manila.</p>
+      <div class="hero-btns"><a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a><a href="#" onclick="showPage('services')" class="btn btn-outline">Our Services</a></div>
     </div>
   </section>
+  <div class="trust-bar"><div class="container"><div class="trust-inner">
+    <div class="stat-item"><span class="stat-number">8+</span><span class="stat-label">Years in Business</span></div>
 
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
+    <div class="stat-item"><span class="stat-number">2000+</span><span class="stat-label">Happy Clients Served</span></div>
+
+    <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Eco-Friendly Products Used</span></div></div></div></div>
+  <section class="section" style="background:var(--dark);">
     <div class="container">
-      <div class="trust-inner">
-        
-      <div class="stat-item">
-        <span class="stat-number">8+</span>
-        <span class="stat-label">Years in Business</span>
-      </div>
-
-      <div class="stat-item">
-        <span class="stat-number">2000+</span>
-        <span class="stat-label">Happy Clients Served</span>
-      </div>
-
-      <div class="stat-item">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Eco-Friendly Products Used</span>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- VALUE PROPOSITION -->
-  <section class="section" id="value-prop" style="background:var(--dark);">
-    <div class="container">
-      <span class="section-label">Why Choose Us</span>
-      <h2>What We Do For You</h2>
-      <p class="section-sub">We deliver results-driven solutions tailored to your unique needs, helping you grow faster and smarter.</p>
+      <span class="section-label">Why Choose Us</span><h2>What We Do For You</h2>
+      <p class="section-sub">Results-driven solutions tailored to your unique needs.</p>
       <div class="value-grid">
-        <div class="value-card"><div class="value-icon">🎯</div><h3>Results-Driven</h3><p>Every strategy is built around measurable outcomes that matter to your business.</p></div>
+        <div class="value-card"><div class="value-icon">🎯</div><h3>Results-Driven</h3><p>Every strategy built around measurable outcomes that matter to your business.</p></div>
         <div class="value-card"><div class="value-icon">⚡</div><h3>Fast Delivery</h3><p>We move quickly without sacrificing quality, so you can launch and grow sooner.</p></div>
-        <div class="value-card"><div class="value-icon">🛡️</div><h3>Proven Expertise</h3><p>Years of experience in Professional Cleaning Services Manila means we know what works and what doesn't.</p></div>
+        <div class="value-card"><div class="value-icon">🛡️</div><h3>Proven Expertise</h3><p>Years of experience in Professional Cleaning Services Manila means we know what works.</p></div>
         <div class="value-card"><div class="value-icon">🤝</div><h3>Dedicated Support</h3><p>We're with you every step of the way, from kickoff to long-term success.</p></div>
       </div>
     </div>
   </section>
-
-  <!-- SERVICES OVERVIEW -->
-  <section class="section" id="services-overview" style="background:var(--dark2);">
+  <section class="section" style="background:var(--dark2);">
     <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h2>Our Core Services</h2>
-      <p class="section-sub">Explore our full range of Professional Cleaning Services Manila solutions designed to help your business thrive.</p>
+      <span class="section-label">What We Offer</span><h2>Our Core Services</h2>
+      <p class="section-sub">Explore our full range of Professional Cleaning Services Manila solutions.</p>
       <div class="services-grid">
-        
-      <div class="service-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Deep Cleaning - Professional Cleaning Services Manila service" class="service-img" />
-        <div class="service-card-body">
-          <h3>Deep Cleaning</h3>
-          <p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p>
-          <a href="#contact" class="card-cta">Learn More →</a>
-        </div>
-      </div>
+    <div class="service-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Deep Cleaning - Professional Cleaning Services Manila service" class="service-img" />
+      <div class="service-card-body"><h3>Deep Cleaning</h3><p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p><a href="#" onclick="showPage('contact')" class="card-cta">Learn More →</a></div>
+    </div>
 
-      <div class="service-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Regular Maintenance Cleaning - Professional Cleaning Services Manila service" class="service-img" />
-        <div class="service-card-body">
-          <h3>Regular Maintenance Cleaning</h3>
-          <p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p>
-          <a href="#contact" class="card-cta">Learn More →</a>
-        </div>
-      </div>
+    <div class="service-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Regular Maintenance Cleaning - Professional Cleaning Services Manila service" class="service-img" />
+      <div class="service-card-body"><h3>Regular Maintenance Cleaning</h3><p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p><a href="#" onclick="showPage('contact')" class="card-cta">Learn More →</a></div>
+    </div>
 
-      <div class="service-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Move-In/Move-Out Cleaning - Professional Cleaning Services Manila service" class="service-img" />
-        <div class="service-card-body">
-          <h3>Move-In/Move-Out Cleaning</h3>
-          <p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p>
-          <a href="#contact" class="card-cta">Learn More →</a>
-        </div>
-      </div>
+    <div class="service-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Move-In/Move-Out Cleaning - Professional Cleaning Services Manila service" class="service-img" />
+      <div class="service-card-body"><h3>Move-In/Move-Out Cleaning</h3><p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p><a href="#" onclick="showPage('contact')" class="card-cta">Learn More →</a></div>
+    </div>
 
-      <div class="service-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Office Cleaning - Professional Cleaning Services Manila service" class="service-img" />
-        <div class="service-card-body">
-          <h3>Office Cleaning</h3>
-          <p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p>
-          <a href="#contact" class="card-cta">Learn More →</a>
-        </div>
-      </div>
+    <div class="service-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Office Cleaning - Professional Cleaning Services Manila service" class="service-img" />
+      <div class="service-card-body"><h3>Office Cleaning</h3><p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p><a href="#" onclick="showPage('contact')" class="card-cta">Learn More →</a></div>
+    </div>
 
-      <div class="service-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Carpet Cleaning - Professional Cleaning Services Manila service" class="service-img" />
-        <div class="service-card-body">
-          <h3>Carpet Cleaning</h3>
-          <p>Revitalize your carpets with our professional carpet cleaning service. We use effective techniques to remove dirt and stains, leaving them fresh.</p>
-          <a href="#contact" class="card-cta">Learn More →</a>
-        </div>
-      </div>
-      </div>
-      <div style="text-align:center;margin-top:48px;">
-        <a href="#" onclick="showPage('services')" class="btn btn-primary">View All Services</a>
-      </div>
+    <div class="service-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Carpet Cleaning - Professional Cleaning Services Manila service" class="service-img" />
+      <div class="service-card-body"><h3>Carpet Cleaning</h3><p>Revitalize your carpets with our professional carpet cleaning service. We use effective techniques to remove dirt and stains, leaving them fresh.</p><a href="#" onclick="showPage('contact')" class="card-cta">Learn More →</a></div>
+    </div></div>
+      <div style="text-align:center;margin-top:48px;"><a href="#" onclick="showPage('services')" class="btn btn-primary">View All Services</a></div>
     </div>
   </section>
-
-  <!-- VIDEO / VISUAL PROOF -->
-  <section class="section" id="visual-proof" style="background:var(--dark);">
+  <section class="section" style="background:var(--dark);">
     <div class="container">
-      <span class="section-label">See It In Action</span>
-      <h2>Watch How We Work</h2>
-      <p class="section-sub">Get a closer look at our process and the results we've delivered for clients like you.</p>
-      <div class="video-wrapper">
-        <div class="video-placeholder">
-          <div class="play-btn" aria-label="Play video"></div>
-          <p style="color:var(--text-muted);font-size:0.9rem;">Insert YouTube / Vimeo video embed here</p>
-        </div>
+      <span class="section-label">See It In Action</span><h2>Watch How We Work</h2>
+      <p class="section-sub">Get a closer look at our process and results.</p>
+      <div style="background:var(--dark2);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);overflow:hidden;max-width:800px;margin:0 auto;">
+        <div class="video-placeholder"><div class="play-btn"></div><p style="color:var(--text-muted);font-size:0.9rem;">Insert YouTube / Vimeo embed here</p></div>
       </div>
     </div>
   </section>
-
-  <!-- ABOUT / AUTHORITY -->
-  <section class="section" id="about" style="background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/3c1237778_generated_image.png') center/cover no-repeat;">
+  <section class="section" style="background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 100%), url('https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/82f2ae194_generated_image.png') center/cover no-repeat;">
     <div class="container">
       <div class="about-grid">
-        <div class="about-img-wrap">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="CleanPro Services team - Professional Cleaning Services Manila experts" />
-        </div>
-        <div class="about-content">
-          <span class="section-label">About Us</span>
-          <h2>Why CleanPro Services?</h2>
-          <p>CleanPro Services is a leading professional cleaning company based in Makati, Metro Manila. With over 8 years of experience, we have proudly served more than 2,000 satisfied clients, providing outstanding residential and commercial cleaning services. Our well-trained and background-checked team uses eco-friendly products to ensure a safe and thorough clean for your space. We are dedicated to quality, reliability, and making your environment pristine, whether at home or in the office.</p>
+        <div class="about-img-wrap"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="CleanPro Services team - Professional Cleaning Services Manila" /></div>
+        <div>
+          <span class="section-label">About Us</span><h2>Why CleanPro Services?</h2>
+          <p style="color:var(--text-muted);margin-bottom:20px;">CleanPro Services is a leading professional cleaning company based in Makati, Metro Manila. With over 8 years of experience, we have proudly served more than 2,000 satisfied clients, providing outstanding residential and commercial cleaning services. Our well-trained and background-checked team uses eco-friendly products to ensure a safe and thorough clean for your space. We are dedicated to quality, reliability, and making your environment pristine, whether at home or in the office.</p>
           <ul class="about-list">
             <li>Proven track record in Professional Cleaning Services Manila</li>
             <li>Dedicated team of specialists</li>
@@ -433,591 +282,277 @@
       </div>
     </div>
   </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section" id="testimonials" style="background:var(--dark);">
+  <section class="section" style="background:var(--dark);">
     <div class="container">
-      <span class="section-label">Client Success</span>
-      <h2>What Our Clients Say</h2>
-      <p class="section-sub">Don't just take our word for it — hear from the people we've helped.</p>
+      <span class="section-label">Client Success</span><h2>What Our Clients Say</h2>
+      <p class="section-sub">Don't just take our word for it — hear from people we've helped.</p>
       <div class="testimonials-grid">
-        
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Maria Santos testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"CleanPro Services transformed my home! Their team was punctual, friendly, and very thorough. I will definitely use them again."</p>
-        <cite>— Maria Santos, Makati City</cite>
-      </div>
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Maria Santos testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"CleanPro Services transformed my home! Their team was punctual, friendly, and very thorough. I will definitely use them again."</p>
+      <cite>— Maria Santos, Makati City</cite>
+    </div>
 
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="James Lim testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"We hired CleanPro for our office cleaning and it was a great decision. They were reliable and did an excellent job at a fair price."</p>
-        <cite>— James Lim, Quezon City</cite>
-      </div>
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="James Lim testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"We hired CleanPro for our office cleaning and it was a great decision. They were reliable and did an excellent job at a fair price."</p>
+      <cite>— James Lim, Quezon City</cite>
+    </div>
 
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Liza Reyes testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"I can't recommend CleanPro enough! They handled our move-out cleaning efficiently and left the place spotless. Truly professional service!"</p>
-        <cite>— Liza Reyes, Pasig City</cite>
-      </div>
-      </div>
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Liza Reyes testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I can't recommend CleanPro enough! They handled our move-out cleaning efficiently and left the place spotless. Truly professional service!"</p>
+      <cite>— Liza Reyes, Pasig City</cite>
+    </div></div>
     </div>
   </section>
-
-  <!-- FINAL CTA -->
   <div class="mid-cta">
     <div class="container">
-      <span class="section-label">Get Started Today</span>
-      <h2>Ready to Work With CleanPro Services?</h2>
-      <p>Let's talk about how we can help you achieve your goals. No commitment, just a conversation.</p>
-      <div class="hero-btns" style="justify-content:center;">
-        <a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a>
-        <a href="tel:+63 917 123 4567" class="btn btn-outline">📞 +63 917 123 4567</a>
-      </div>
+      <span class="section-label">Get Started Today</span><h2>Ready to Work With CleanPro Services?</h2>
+      <p>Let's talk about how we can help you achieve your goals.</p>
+      <div class="hero-btns"><a href="tel:+63 917 123 4567" class="btn btn-outline">📞 +63 917 123 4567</a><a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a></div>
     </div>
   </div>
+</div>
 
-</div><!-- /page-home -->
-
-
-<!-- ===== ABOUT PAGE ===== -->
+<!-- ABOUT PAGE -->
 <div id="page-about" class="page-section">
-  <div id="about-page">
-
-    <!-- HERO -->
-    <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;">
-      <div class="container">
-        <span class="section-label">About Us</span>
-        <h1>Who We Are</h1>
-        <p style="color:var(--text-muted);max-width:600px;margin:16px auto 0;font-size:1.05rem;">CleanPro Services — passionate experts delivering exceptional Professional Cleaning Services Manila services to clients who deserve the best.</p>
+  <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;"><div class="container"><span class="section-label">About Us</span><h1>Who We Are</h1><p style="color:var(--text-muted);max-width:600px;margin:16px auto 0;">CleanPro Services — experts delivering exceptional Professional Cleaning Services Manila services.</p></div></div>
+  <section class="section" style="background:var(--dark);">
+    <div class="container">
+      <div class="about-grid">
+        <div><span class="section-label">Company Overview</span><h2>Who We Are</h2><p style="color:var(--text-muted);margin-bottom:20px;">CleanPro Services is a leading professional cleaning company based in Makati, Metro Manila. With over 8 years of experience, we have proudly served more than 2,000 satisfied clients, providing outstanding residential and commercial cleaning services. Our well-trained and background-checked team uses eco-friendly products to ensure a safe and thorough clean for your space. We are dedicated to quality, reliability, and making your environment pristine, whether at home or in the office.</p><p style="color:var(--text-muted);">Our mission is to deliver measurable results through expertise, innovation, and commitment to client success.</p></div>
+        <div class="about-img-wrap"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="CleanPro Services company overview" style="width:100%;border-radius:var(--radius);" /></div>
       </div>
     </div>
-
-    <!-- COMPANY OVERVIEW -->
-    <section class="section" style="background:var(--dark);">
-      <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="about-grid">
-          <div>
-            <span class="section-label">Company Overview</span>
-            <h2>Who We Are</h2>
-            <p style="color:var(--text-muted);margin-bottom:20px;">CleanPro Services is a leading professional cleaning company based in Makati, Metro Manila. With over 8 years of experience, we have proudly served more than 2,000 satisfied clients, providing outstanding residential and commercial cleaning services. Our well-trained and background-checked team uses eco-friendly products to ensure a safe and thorough clean for your space. We are dedicated to quality, reliability, and making your environment pristine, whether at home or in the office.</p>
-            <p style="color:var(--text-muted);">Our mission is to deliver measurable results through expertise, innovation, and an unwavering commitment to client success.</p>
-          </div>
-          <div class="about-img-wrap">
-            <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="CleanPro Services company overview" style="width:100%;border-radius:var(--radius);" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT WE DO -->
-    <section class="section" style="background:var(--dark2);">
-      <div class="container">
-        <span class="section-label">What We Do</span>
-        <h2>Our Expertise</h2>
-        <p class="section-sub">We specialize in Professional Cleaning Services Manila services that drive real, tangible results for our clients.</p>
-        <div class="value-grid">
-          <div class="value-card"><div class="value-icon">⭐</div><h3>Deep Cleaning</h3><p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Regular Maintenance Cleaning</h3><p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Move-In/Move-Out Cleaning</h3><p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Office Cleaning</h3><p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUR HISTORY -->
-    <section class="section" style="background:var(--dark);">
-      <div class="container">
-        <div style="background:var(--dark2);border-radius:var(--radius);padding:48px;max-width:800px;margin:0 auto;">
-          <span class="section-label">Our Journey</span>
-          <h2>Our History</h2>
-          <p style="color:var(--text-muted);margin-bottom:20px;">CleanPro Services was founded with a clear vision: to make Professional Cleaning Services Manila services accessible, effective, and client-focused. Over the years, we've grown from a small team into a trusted name in the industry.</p>
-          <p style="color:var(--text-muted);">Every milestone we've achieved has been driven by our commitment to excellence and the trust our clients place in us. We continue to evolve, innovate, and set new standards in Professional Cleaning Services Manila.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUICK NAV -->
-    <section style="background:var(--dark2);padding:48px 0;">
-      <div class="container" style="text-align:center;">
-        <h3 style="margin-bottom:24px;">Explore More</h3>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
-          <a href="#" onclick="showPage('services')" class="btn btn-outline">Our Services</a>
-          <a href="#" onclick="showPage('contact')" class="btn btn-outline">Contact Us</a>
-          <a href="#" onclick="showPage('home')" class="btn btn-ghost">Back to Home</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MEET THE TEAM -->
-    <section class="section" id="team" style="background:var(--dark);">
-      <div class="container">
-        <span class="section-label">Meet the Team</span>
-        <h2>The People Behind CleanPro Services</h2>
-        <p class="section-sub">Our team of experienced professionals is dedicated to delivering results that exceed expectations.</p>
-        <div class="team-grid">
-          <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member photo" /><div class="team-info"><h3>Team Member</h3><span>Professional Cleaning Services Manila Specialist</span></div></div>
-          <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member photo" /><div class="team-info"><h3>Team Member</h3><span>Senior Consultant</span></div></div>
-          <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member photo" /><div class="team-info"><h3>Team Member</h3><span>Project Manager</span></div></div>
-          <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member photo" /><div class="team-info"><h3>Team Member</h3><span>Client Success</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="section" style="background:var(--dark2);">
-      <div class="container">
-        <span class="section-label">Testimonials</span>
-        <h2>What Clients Say</h2>
-        <div class="testimonials-grid">
-          
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Maria Santos testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"CleanPro Services transformed my home! Their team was punctual, friendly, and very thorough. I will definitely use them again."</p>
-        <cite>— Maria Santos, Makati City</cite>
-      </div>
-
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="James Lim testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"We hired CleanPro for our office cleaning and it was a great decision. They were reliable and did an excellent job at a fair price."</p>
-        <cite>— James Lim, Quezon City</cite>
-      </div>
-
-      <div class="testimonial-card">
-        <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Liza Reyes testimonial photo" class="testimonial-avatar" />
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"I can't recommend CleanPro enough! They handled our move-out cleaning efficiently and left the place spotless. Truly professional service!"</p>
-        <cite>— Liza Reyes, Pasig City</cite>
-      </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <div class="mid-cta">
-      <div class="container">
-        <h2>Ready to Partner With Us?</h2>
-        <p>Let's discuss how CleanPro Services can help you reach your goals.</p>
-        <a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a>
+  </section>
+  <section class="section" style="background:var(--dark2);">
+    <div class="container"><span class="section-label">What We Do</span><h2>Our Expertise</h2><p class="section-sub">We specialize in Professional Cleaning Services Manila that drives real, tangible results.</p>
+      <div class="value-grid"><div class="value-card"><div class="value-icon">⭐</div><h3>Deep Cleaning</h3><p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Regular Maintenance Cleaning</h3><p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Move-In/Move-Out Cleaning</h3><p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p></div><div class="value-card"><div class="value-icon">⭐</div><h3>Office Cleaning</h3><p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p></div></div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--dark);">
+    <div class="container"><div style="background:var(--dark2);border-radius:var(--radius);padding:48px;max-width:800px;margin:0 auto;">
+      <span class="section-label">Our Journey</span><h2>Our History</h2>
+      <p style="color:var(--text-muted);margin-bottom:20px;">CleanPro Services was founded with a clear vision: to make Professional Cleaning Services Manila services accessible, effective, and client-focused. Over the years, we've grown into a trusted name in the industry.</p>
+      <p style="color:var(--text-muted);">Every milestone we've achieved has been driven by our commitment to excellence and the trust our clients place in us.</p>
+    </div></div>
+  </section>
+  <section style="background:var(--dark2);padding:48px 0;">
+    <div class="container" style="text-align:center;"><h3 style="margin-bottom:24px;">Explore More</h3>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <a href="#" onclick="showPage('services')" class="btn btn-outline">Our Services</a>
+        <a href="#" onclick="showPage('contact')" class="btn btn-outline">Contact Us</a>
+        <a href="#" onclick="showPage('home')" class="btn btn-ghost">Back to Home</a>
       </div>
     </div>
+  </section>
+  <section class="section" style="background:var(--dark);">
+    <div class="container"><span class="section-label">Meet the Team</span><h2>The People Behind CleanPro Services</h2><p class="section-sub">Our experienced team is dedicated to delivering results that exceed expectations.</p>
+      <div class="team-grid">
+        <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member" /><div class="team-info"><h3>Team Member</h3><span>Professional Cleaning Services Manila Specialist</span></div></div>
+        <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member" /><div class="team-info"><h3>Team Member</h3><span>Senior Consultant</span></div></div>
+        <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member" /><div class="team-info"><h3>Team Member</h3><span>Project Manager</span></div></div>
+        <div class="team-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Team member" /><div class="team-info"><h3>Team Member</h3><span>Client Success</span></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--dark2);">
+    <div class="container"><span class="section-label">Testimonials</span><h2>What Clients Say</h2>
+      <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Maria Santos testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"CleanPro Services transformed my home! Their team was punctual, friendly, and very thorough. I will definitely use them again."</p>
+      <cite>— Maria Santos, Makati City</cite>
+    </div>
 
-  </div>
-</div><!-- /page-about -->
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="James Lim testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"We hired CleanPro for our office cleaning and it was a great decision. They were reliable and did an excellent job at a fair price."</p>
+      <cite>— James Lim, Quezon City</cite>
+    </div>
 
+    <div class="testimonial-card">
+      <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Liza Reyes testimonial photo" class="testimonial-avatar" />
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I can't recommend CleanPro enough! They handled our move-out cleaning efficiently and left the place spotless. Truly professional service!"</p>
+      <cite>— Liza Reyes, Pasig City</cite>
+    </div></div>
+    </div>
+  </section>
+  <div class="mid-cta"><div class="container"><h2>Ready to Partner With Us?</h2><p>Let's discuss how CleanPro Services can help you reach your goals.</p><a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a></div></div>
+</div>
 
-<!-- ===== SERVICES PAGE ===== -->
+<!-- SERVICES PAGE -->
 <div id="page-services" class="page-section">
-
-  <!-- HERO -->
-  <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;">
-    <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h1>Our Services</h1>
-      <p style="color:var(--text-muted);max-width:600px;margin:16px auto 0;font-size:1.05rem;">Comprehensive Professional Cleaning Services Manila services tailored to help your business grow, convert, and succeed.</p>
-    </div>
-  </div>
-
-  <!-- SERVICES GRID -->
+  <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;"><div class="container"><span class="section-label">What We Offer</span><h1>Our Services</h1><p style="color:var(--text-muted);max-width:600px;margin:16px auto 0;">Comprehensive Professional Cleaning Services Manila services tailored for your business growth.</p></div></div>
   <section class="section" style="background:var(--dark);">
-    <div class="container">
-      <span class="section-label">Professional Cleaning Services Manila</span>
-      <h2>All Services</h2>
-      <p class="section-sub">Everything you need under one roof — explore our full suite of offerings.</p>
-      <div class="services-full-grid">
-        
-        <div class="service-full-card">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Deep Cleaning - Professional Cleaning Services Manila" />
-          <div class="service-full-card-body">
-            <h3>Deep Cleaning</h3>
-            <p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p>
-            <a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a>
-          </div>
-        </div>
-        <div class="service-full-card">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Regular Maintenance Cleaning - Professional Cleaning Services Manila" />
-          <div class="service-full-card-body">
-            <h3>Regular Maintenance Cleaning</h3>
-            <p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p>
-            <a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a>
-          </div>
-        </div>
-        <div class="service-full-card">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Move-In/Move-Out Cleaning - Professional Cleaning Services Manila" />
-          <div class="service-full-card-body">
-            <h3>Move-In/Move-Out Cleaning</h3>
-            <p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p>
-            <a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a>
-          </div>
-        </div>
-        <div class="service-full-card">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Office Cleaning - Professional Cleaning Services Manila" />
-          <div class="service-full-card-body">
-            <h3>Office Cleaning</h3>
-            <p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p>
-            <a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a>
-          </div>
-        </div>
-        <div class="service-full-card">
-          <img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Carpet Cleaning - Professional Cleaning Services Manila" />
-          <div class="service-full-card-body">
-            <h3>Carpet Cleaning</h3>
-            <p>Revitalize your carpets with our professional carpet cleaning service. We use effective techniques to remove dirt and stains, leaving them fresh.</p>
-            <a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a>
-          </div>
-        </div>
-      </div>
+    <div class="container"><span class="section-label">Professional Cleaning Services Manila</span><h2>All Services</h2><p class="section-sub">Everything you need under one roof.</p>
+      <div class="services-full-grid"><div class="service-full-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Deep Cleaning" /><div class="service-full-card-body"><h3>Deep Cleaning</h3><p>Our deep cleaning service thoroughly cleans every nook and cranny. We ensure all surfaces are sanitized and refreshed for a healthier environment.</p><a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a></div></div><div class="service-full-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Regular Maintenance Cleaning" /><div class="service-full-card-body"><h3>Regular Maintenance Cleaning</h3><p>Keep your space spotless with our scheduled maintenance cleaning. Tailored to your needs, this service ensures ongoing cleanliness and order.</p><a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a></div></div><div class="service-full-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Move-In/Move-Out Cleaning" /><div class="service-full-card-body"><h3>Move-In/Move-Out Cleaning</h3><p>Preparing to move? Our move-in/move-out cleaning makes your transition smoother and more enjoyable by providing a spotless new or old space.</p><a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a></div></div><div class="service-full-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Office Cleaning" /><div class="service-full-card-body"><h3>Office Cleaning</h3><p>We offer specialized office cleaning services that keep your workplace clean and professional. Focus on your work while we take care of the mess.</p><a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a></div></div><div class="service-full-card"><img src="https://media.base44.com/images/public/69f4b5dbf6c399dfbfd41481/038215da9_general-img-square.png" alt="Carpet Cleaning" /><div class="service-full-card-body"><h3>Carpet Cleaning</h3><p>Revitalize your carpets with our professional carpet cleaning service. We use effective techniques to remove dirt and stains, leaving them fresh.</p><a href="#" onclick="showPage('contact')" class="btn btn-outline" style="font-size:0.85rem;padding:10px 20px;">Get a Quote</a></div></div></div>
     </div>
   </section>
-
-  <!-- MID CTA -->
-  <div class="mid-cta">
-    <div class="container">
-      <h2>Not Sure Which Service Is Right For You?</h2>
-      <p>Let's have a conversation. We'll recommend the right solution for your specific situation.</p>
-      <a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a>
-    </div>
-  </div>
-
-  <!-- FINAL CTA -->
-  <section class="section" style="background:var(--dark);">
-    <div class="container" style="text-align:center;">
-      <span class="section-label">Get Started</span>
-      <h2>Let's Build Something Great Together</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Join hundreds of satisfied clients who trust CleanPro Services for their Professional Cleaning Services Manila needs.</p>
-      <div class="hero-btns" style="justify-content:center;">
-        <a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a>
-        <a href="tel:+63 917 123 4567" class="btn btn-outline">📞 Call Us</a>
-      </div>
+  <div class="mid-cta"><div class="container"><h2>Not Sure Which Service Is Right For You?</h2><p>Let's have a conversation. We'll recommend the right solution.</p><a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a></div></div>
+  <section class="section" style="background:var(--dark);text-align:center;">
+    <div class="container"><span class="section-label">Get Started</span><h2>Let's Build Something Great Together</h2><p class="section-sub" style="margin-left:auto;margin-right:auto;">Join satisfied clients who trust CleanPro Services for their Professional Cleaning Services Manila needs.</p>
+      <div class="hero-btns"><a href="#" onclick="showPage('contact')" class="btn btn-primary">Book Your Cleaning Now</a><a href="tel:+63 917 123 4567" class="btn btn-outline">📞 Call Us</a></div>
     </div>
   </section>
+</div>
 
-</div><!-- /page-services -->
-
-
-<!-- ===== CONTACT PAGE ===== -->
+<!-- CONTACT PAGE -->
 <div id="page-contact" class="page-section">
-
-  <!-- HERO -->
-  <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;">
-    <div class="container">
-      <span class="section-label">Get In Touch</span>
-      <h1>Contact Us</h1>
-      <p style="color:var(--text-muted);max-width:560px;margin:16px auto 0;font-size:1.05rem;">Have a question or ready to get started? We'd love to hear from you.</p>
-    </div>
-  </div>
-
-  <!-- CONTACT FORM + INFO -->
-  <section class="section" id="contact-page" style="background:var(--dark);">
+  <div style="background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06);padding:96px 0 64px;text-align:center;"><div class="container"><span class="section-label">Get In Touch</span><h1>Contact Us</h1><p style="color:var(--text-muted);max-width:560px;margin:16px auto 0;">Have a question or ready to get started? We'd love to hear from you.</p></div></div>
+  <section class="section" style="background:var(--dark);">
     <div class="container">
       <div class="contact-layout">
-
-        <!-- FORM -->
         <div class="contact-form-wrap">
           <h3>Send Us a Message</h3>
           <form onsubmit="handleFormSubmit(event)" novalidate>
-            <div class="form-group">
-              <label for="name">Full Name <span class="req">*</span></label>
-              <input type="text" id="name" name="full_name" placeholder="Your full name" required />
-            </div>
-            <div class="form-group">
-              <label for="femail">Email Address <span class="req">*</span></label>
-              <input type="email" id="femail" name="email" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label for="fphone">Phone Number <span class="req">*</span></label>
-              <input type="tel" id="fphone" name="phone" placeholder="+63 900 000 0000" required />
-            </div>
-            <div class="form-group">
-              <label for="fwebsite">Website (Optional)</label>
-              <input type="url" id="fwebsite" name="website" placeholder="https://yourwebsite.com" />
-            </div>
-            <div class="form-group">
-              <label for="fservice">Service of Interest <span class="req">*</span></label>
+            <div class="form-group"><label for="name">Full Name <span class="req">*</span></label><input type="text" id="name" name="full_name" placeholder="Your full name" required /></div>
+            <div class="form-group"><label for="femail">Email Address <span class="req">*</span></label><input type="email" id="femail" name="email" placeholder="your@email.com" required /></div>
+            <div class="form-group"><label for="fphone">Phone Number <span class="req">*</span></label><input type="tel" id="fphone" name="phone" placeholder="+63 900 000 0000" required /></div>
+            <div class="form-group"><label for="fwebsite">Website (Optional)</label><input type="url" id="fwebsite" name="website" placeholder="https://yourwebsite.com" /></div>
+            <div class="form-group"><label for="fservice">Service of Interest <span class="req">*</span></label>
               <select id="fservice" name="service" required>
                 <option value="" disabled selected>Select a service…</option>
                 <option value="Deep Cleaning">Deep Cleaning</option><option value="Regular Maintenance Cleaning">Regular Maintenance Cleaning</option><option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Cleaning</option><option value="Office Cleaning">Office Cleaning</option><option value="Carpet Cleaning">Carpet Cleaning</option>
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="fmessage">Message <span class="req">*</span></label>
-              <textarea id="fmessage" name="message" placeholder="Tell us about your project or inquiry…" required></textarea>
-            </div>
-            <p class="form-note">* Required fields. We typically respond within 1–2 business days.</p>
+            <div class="form-group"><label for="fmessage">Message <span class="req">*</span></label><textarea id="fmessage" name="message" placeholder="Tell us about your project…" required></textarea></div>
+            <p class="form-note">* Required fields. We respond within 1–2 business days.</p>
             <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;">Book Your Cleaning Now</button>
           </form>
           <div id="form-success" style="display:none;background:color-mix(in srgb,#4E8C1A 12%,transparent);border:1px solid color-mix(in srgb,#4E8C1A 35%,transparent);border-radius:8px;padding:24px;margin-top:20px;text-align:center;">
             <p style="font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:8px;">✅ Message Received!</p>
-            <p style="color:var(--text-muted);font-size:0.9rem;">Thank you for reaching out. We'll get back to you within 1–2 business days.</p>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Thank you! We'll get back to you within 1–2 business days.</p>
           </div>
         </div>
-
-        <!-- CONTACT INFO -->
-        <div class="contact-info-wrap">
-          <h3>Contact Information</h3>
+        <div>
+          <h3 style="margin-bottom:28px;">Contact Information</h3>
           <div class="contact-info-items">
             <div class="contact-info-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></div></div>
             <div class="contact-info-item"><div class="contact-icon">📞</div><div><h4>Phone</h4><a href="tel:+63 917 123 4567">+63 917 123 4567</a></div></div>
             <div class="contact-info-item"><div class="contact-icon">📍</div><div><h4>Address</h4><p>123 Bonifacio Ave, Makati City, Metro Manila</p></div></div>
             <div class="contact-info-item"><div class="contact-icon">🕐</div><div><h4>Business Hours</h4><p>Mon–Fri: 9:00 AM – 6:00 PM<br/>Sat: 10:00 AM – 3:00 PM</p></div></div>
           </div>
-
-          <!-- OFFICE LOCATIONS / MAP -->
-          <h4 style="margin-bottom:12px;color:var(--text-muted);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;">Our Location</h4>
-          <div class="map-placeholder">
-            <p>Google Maps — Insert embed here</p>
-          </div>
+          <h4 style="margin-bottom:12px;color:var(--text-muted);font-size:0.85rem;text-transform:uppercase;">Our Location</h4>
+          <div class="map-placeholder"><p>Google Maps — Insert embed here</p></div>
         </div>
-
       </div>
     </div>
   </section>
+  <div class="mid-cta"><div class="container"><h2>Prefer to Talk Directly?</h2><p>Give us a call and let's discuss your needs.</p><div class="hero-btns"><a href="tel:+63 917 123 4567" class="btn btn-primary">📞 +63 917 123 4567</a><a href="mailto:rafaelbautista7777@gmail.com" class="btn btn-outline">✉️ Email Us</a></div></div></div>
+</div>
 
-  <!-- FINAL CTA -->
-  <div class="mid-cta">
-    <div class="container">
-      <h2>Prefer to Talk Directly?</h2>
-      <p>Give us a call and let's discuss how we can help your business grow today.</p>
-      <div class="hero-btns" style="justify-content:center;">
-        <a href="tel:+63 917 123 4567" class="btn btn-primary">📞 +63 917 123 4567</a>
-        <a href="mailto:rafaelbautista7777@gmail.com" class="btn btn-outline">✉️ Email Us</a>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /page-contact -->
-
-
-<!-- ===== PRIVACY POLICY PAGE ===== -->
+<!-- PRIVACY POLICY -->
 <div id="page-privacy" class="page-section">
-  <div class="legal-page-hero">
-    <div class="container">
-      <span class="section-label">Legal</span>
-      <h1>Privacy Policy</h1>
-      <p style="color:var(--text-muted);margin-top:12px;">How we collect, use, and protect your personal information</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="legal-nav">
-      <a href="#" onclick="showPage('privacy')" class="active">Privacy Policy</a>
-      <a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a>
-      <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
-    </div>
-    <div class="legal-content">
-      <p class="last-updated">Last Updated: January 1, 2026</p>
-      <p>CleanPro Services ("we", "us", or "our") is committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
-      <h2>Information We Collect</h2>
-      <h3>Personal Data</h3>
-      <p>We collect information you provide directly to us, including: name, email address, phone number, website URL, and any messages you send via our contact form.</p>
-      <h3>Usage Data</h3>
-      <p>We automatically collect certain information when you visit our website, including IP address, browser type, pages visited, time spent on pages, and referring URLs.</p>
-      <h3>Cookies &amp; Tracking Technologies</h3>
-      <p>We use cookies and similar tracking technologies to enhance your experience, analyze site traffic, and understand where our visitors come from. You can control cookie settings through your browser preferences.</p>
-      <h2>Purposes for Collecting Information</h2>
-      <ul>
-        <li>To provide, maintain, and improve our services</li>
-        <li>To respond to inquiries and provide customer support</li>
-        <li>To send service-related communications</li>
-        <li>To analyze and improve website performance</li>
-        <li>To comply with legal obligations</li>
-      </ul>
-      <h2>Third Parties We Share Information With</h2>
-      <p>We do not sell your personal information. We may share information with trusted third-party service providers (e.g., analytics, email services, CRM) who assist in operating our website and business, subject to confidentiality agreements.</p>
-      <h2>Your Choices &amp; Rights</h2>
-      <h3>GDPR Rights (EU Residents)</h3>
-      <p>If you are located in the European Union, you have the right to access, rectify, erase, restrict processing, and port your personal data. You also have the right to object to processing and to withdraw consent at any time.</p>
-      <h3>CCPA/CPRA Rights (California Residents)</h3>
-      <p>California residents have the right to know what personal information is collected, request deletion of personal information, opt out of the sale of personal information, and non-discrimination for exercising these rights.</p>
-      <h2>Data Retention</h2>
-      <p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required or permitted by law.</p>
-      <h2>Security Measures</h2>
-      <p>We implement appropriate technical and organizational security measures to protect your personal information. However, no transmission over the Internet is 100% secure.</p>
-      <h2>Children's Privacy</h2>
-      <p>Our services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If you become aware that a child has provided us with personal information, please contact us.</p>
-      <h2>Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on this page with an updated "Last Updated" date.</p>
-      <h2>How to Contact Us</h2>
-      <p>If you have questions or concerns about this Privacy Policy, please contact us:</p>
-      <ul>
-        <li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li>
-        <li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li>
-        <li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li>
-      </ul>
-    </div>
-  </div>
-</div><!-- /page-privacy -->
+  <div class="legal-page-hero"><div class="container"><span class="section-label">Legal</span><h1>Privacy Policy</h1><p style="color:var(--text-muted);margin-top:12px;">How we collect, use, and protect your personal information</p></div></div>
+  <div class="container"><div class="legal-nav"><a href="#" onclick="showPage('privacy')" class="active">Privacy Policy</a><a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a><a href="#" onclick="showPage('disclaimer')">Disclaimer</a></div>
+  <div class="legal-content"><p class="last-updated">Last Updated: January 1, 2026</p>
+    <p>CleanPro Services ("we", "us", or "our") is committed to protecting your personal information and your right to privacy.</p>
+    <h2>Information We Collect</h2><h3>Personal Data</h3><p>We collect information you provide directly: name, email, phone number, website URL, and messages via our contact form.</p>
+    <h3>Usage Data</h3><p>We automatically collect IP address, browser type, pages visited, time spent, and referring URLs.</p>
+    <h3>Cookies &amp; Tracking Technologies</h3><p>We use cookies to enhance experience and analyze traffic. You can control cookies through browser preferences.</p>
+    <h2>Purposes for Collecting Information</h2><ul><li>To provide, maintain, and improve our services</li><li>To respond to inquiries and provide support</li><li>To send service-related communications</li><li>To analyze and improve website performance</li><li>To comply with legal obligations</li></ul>
+    <h2>Third Parties We Share Information With</h2><p>We do not sell your personal information. We may share with trusted service providers (analytics, email, CRM) subject to confidentiality agreements.</p>
+    <h2>Your Choices &amp; Rights</h2><h3>GDPR Rights (EU Residents)</h3><p>You have rights to access, rectify, erase, restrict processing, and port your personal data. You may also withdraw consent at any time.</p>
+    <h3>CCPA/CPRA Rights (California Residents)</h3><p>You have the right to know what data is collected, request deletion, opt out of sale, and non-discrimination for exercising these rights.</p>
+    <h2>Data Retention</h2><p>We retain personal information as long as necessary to fulfill the purposes described in this policy.</p>
+    <h2>Security Measures</h2><p>We implement appropriate technical and organizational security measures to protect your information.</p>
+    <h2>Children's Privacy</h2><p>Our services are not directed to children under 13. We do not knowingly collect data from children under 13.</p>
+    <h2>Changes to This Policy</h2><p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the new policy with an updated date.</p>
+    <h2>How to Contact Us</h2><ul><li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li><li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li><li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li></ul>
+  </div></div>
+</div>
 
-
-<!-- ===== TERMS & CONDITIONS PAGE ===== -->
+<!-- TERMS & CONDITIONS -->
 <div id="page-terms" class="page-section">
-  <div class="legal-page-hero">
-    <div class="container">
-      <span class="section-label">Legal</span>
-      <h1>Terms &amp; Conditions</h1>
-      <p style="color:var(--text-muted);margin-top:12px;">The rules and guidelines for using our services</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="legal-nav">
-      <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#" onclick="showPage('terms')" class="active">Terms &amp; Conditions</a>
-      <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
-    </div>
-    <div class="legal-content">
-      <p class="last-updated">Last Updated: January 1, 2026</p>
-      <p>By accessing or using CleanPro Services's website and services, you agree to be bound by these Terms and Conditions. Please read them carefully before using our services.</p>
-      <h2>Acceptance of Terms</h2>
-      <p>By accessing this website, you confirm that you are at least 18 years of age, have read and understood these Terms, and agree to be legally bound by them.</p>
-      <h2>Changes to Agreement</h2>
-      <p>We reserve the right to modify these Terms at any time. Continued use of our services after changes constitutes acceptance of the updated Terms.</p>
-      <h2>Guidelines for Use</h2>
-      <p>You agree to use our website and services only for lawful purposes and in a manner that does not infringe the rights of others or restrict their use and enjoyment of the site.</p>
-      <h2>Intellectual Property</h2>
-      <p>All content on this website, including text, graphics, logos, and images, is the property of CleanPro Services and is protected by applicable intellectual property laws. You may not reproduce or distribute content without express written permission.</p>
-      <h2>Limited License</h2>
-      <p>We grant you a limited, non-exclusive, non-transferable license to access and use our website for personal, non-commercial purposes only.</p>
-      <h2>No Warranties</h2>
-      <p>Our services are provided "as is" without warranties of any kind, express or implied. We do not warrant that the service will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
-      <h2>Limitation of Liability</h2>
-      <p>To the maximum extent permitted by law, CleanPro Services shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.</p>
-      <h2>Indemnification</h2>
-      <p>You agree to indemnify and hold harmless CleanPro Services, its officers, directors, employees, and agents from any claims, damages, or expenses arising from your use of our services or violation of these Terms.</p>
-      <h2>Fees &amp; Payments</h2>
-      <p>Fees for services are as agreed upon in your service agreement. All payments are due as specified. We reserve the right to change pricing with reasonable notice.</p>
-      <h2>Refund Policy</h2>
-      <p>Refund eligibility depends on the specific service agreement. Please contact us to discuss any refund requests. We are committed to fair resolution of all disputes.</p>
-      <h2>Governing Law</h2>
-      <p>These Terms shall be governed by and construed in accordance with applicable laws. Any disputes shall be subject to the exclusive jurisdiction of the appropriate courts.</p>
-      <h2>Binding Arbitration</h2>
-      <p>Any dispute arising from these Terms or your use of our services shall be resolved through binding arbitration in accordance with applicable arbitration rules, rather than in court, except where prohibited by law.</p>
-      <h2>Class Action Waiver</h2>
-      <p>You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.</p>
-      <h2>Termination</h2>
-      <p>We reserve the right to terminate or suspend your access to our services at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
-      <h2>Severability</h2>
-      <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
-      <h2>Entire Agreement</h2>
-      <p>These Terms constitute the entire agreement between you and CleanPro Services regarding your use of our services and supersede all prior agreements.</p>
-      <h2>How to Contact Us</h2>
-      <ul>
-        <li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li>
-        <li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li>
-        <li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li>
-      </ul>
-    </div>
-  </div>
-</div><!-- /page-terms -->
+  <div class="legal-page-hero"><div class="container"><span class="section-label">Legal</span><h1>Terms &amp; Conditions</h1><p style="color:var(--text-muted);margin-top:12px;">The rules and guidelines for using our services</p></div></div>
+  <div class="container"><div class="legal-nav"><a href="#" onclick="showPage('privacy')">Privacy Policy</a><a href="#" onclick="showPage('terms')" class="active">Terms &amp; Conditions</a><a href="#" onclick="showPage('disclaimer')">Disclaimer</a></div>
+  <div class="legal-content"><p class="last-updated">Last Updated: January 1, 2026</p>
+    <p>By accessing or using CleanPro Services's website and services, you agree to be bound by these Terms and Conditions.</p>
+    <h2>Acceptance of Terms</h2><p>By accessing this website, you confirm you are at least 18 years of age, have read these Terms, and agree to be legally bound by them.</p>
+    <h2>Changes to Agreement</h2><p>We reserve the right to modify these Terms at any time. Continued use after changes constitutes acceptance.</p>
+    <h2>Guidelines for Use</h2><p>You agree to use our website only for lawful purposes and in a manner that does not infringe the rights of others.</p>
+    <h2>Intellectual Property</h2><p>All content on this website is the property of CleanPro Services and protected by intellectual property laws. You may not reproduce or distribute content without written permission.</p>
+    <h2>Limited License</h2><p>We grant you a limited, non-exclusive, non-transferable license to access and use our website for personal, non-commercial purposes only.</p>
+    <h2>No Warranties</h2><p>Our services are provided "as is" without warranties of any kind, express or implied.</p>
+    <h2>Limitation of Liability</h2><p>To the maximum extent permitted by law, CleanPro Services shall not be liable for any indirect, incidental, special, consequential, or punitive damages.</p>
+    <h2>Indemnification</h2><p>You agree to indemnify and hold harmless CleanPro Services from any claims, damages, or expenses arising from your use of our services or violation of these Terms.</p>
+    <h2>Fees &amp; Payments</h2><p>Fees for services are as agreed upon in your service agreement. We reserve the right to change pricing with reasonable notice.</p>
+    <h2>Refund Policy</h2><p>Refund eligibility depends on the specific service agreement. Contact us to discuss any refund requests.</p>
+    <h2>Governing Law</h2><p>These Terms shall be governed by applicable laws. Disputes shall be subject to the exclusive jurisdiction of the appropriate courts.</p>
+    <h2>Binding Arbitration</h2><p>Any dispute arising from these Terms shall be resolved through binding arbitration rather than in court, except where prohibited by law.</p>
+    <h2>Class Action Waiver</h2><p>You agree that any dispute resolution will be conducted only on an individual basis and not in a class or representative action.</p>
+    <h2>Termination</h2><p>We reserve the right to terminate or suspend your access to our services at our sole discretion, without notice, for violations of these Terms.</p>
+    <h2>Severability</h2><p>If any provision of these Terms is found unenforceable, the remaining provisions will continue in full force.</p>
+    <h2>Entire Agreement</h2><p>These Terms constitute the entire agreement between you and CleanPro Services regarding your use of our services.</p>
+    <h2>How to Contact Us</h2><ul><li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li><li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li><li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li></ul>
+  </div></div>
+</div>
 
-
-<!-- ===== DISCLAIMER PAGE ===== -->
+<!-- DISCLAIMER -->
 <div id="page-disclaimer" class="page-section">
-  <div class="legal-page-hero">
-    <div class="container">
-      <span class="section-label">Legal</span>
-      <h1>Disclaimer</h1>
-      <p style="color:var(--text-muted);margin-top:12px;">Important limitations and disclosures about our content</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="legal-nav">
-      <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a>
-      <a href="#" onclick="showPage('disclaimer')" class="active">Disclaimer</a>
-    </div>
-    <div class="legal-content">
-      <p class="last-updated">Last Updated: January 1, 2026</p>
-      <h2>General Disclaimer</h2>
-      <p>The information provided by CleanPro Services on this website is for general informational purposes only. All information is provided in good faith; however, we make no representation or warranty of any kind regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
-      <h2>Not Professional Advice</h2>
-      <p>The content on this website does not constitute professional, legal, financial, medical, or any other type of advice. Always seek the guidance of qualified professionals for specific concerns related to your situation.</p>
-      <h2>Your Responsibility</h2>
-      <p>Use of any information provided on this website is solely at your own risk. CleanPro Services shall not be held responsible for decisions made based on the information provided herein.</p>
-      <h2>Earnings Disclaimer</h2>
-      <p>Any income or earnings statements, or income or earnings examples, are only estimates of what we think you could earn. There is no assurance you will do as well as stated in any examples. Results vary and depend on many factors including individual effort, skills, and market conditions.</p>
-      <h2>Third Party Links</h2>
-      <p>This website may contain links to third-party websites. These links are provided for convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
-      <h2>Testimonials Disclaimer</h2>
-      <p>Testimonials on this website reflect the real-life experiences of clients who have used our services. However, individual results may vary. Testimonials are not necessarily representative of all clients.</p>
-      <h2>Affiliate Disclaimer</h2>
-      <p>This website may contain affiliate links. If you click on an affiliate link and make a purchase, we may receive a commission at no additional cost to you. We only recommend products and services we believe in.</p>
-      <h2>Sponsored Posts</h2>
-      <p>Some content on this website may be sponsored. Sponsored content will be clearly marked. Sponsorship does not affect our editorial independence or the accuracy of the information provided.</p>
-      <h2>Fair Use Disclaimer</h2>
-      <p>This website may use copyrighted material that has not been specifically authorized by the copyright owner. Such material is made available for educational and informational purposes, constituting fair use under copyright law.</p>
-      <h2>Changes to the Disclaimer</h2>
-      <p>We reserve the right to update this Disclaimer at any time. Changes will be effective immediately upon posting. Continued use of our website constitutes acceptance of the updated Disclaimer.</p>
-      <h2>How to Contact Us</h2>
-      <p>If you have questions about this Disclaimer, please contact us:</p>
-      <ul>
-        <li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li>
-        <li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li>
-        <li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li>
-      </ul>
-    </div>
-  </div>
-</div><!-- /page-disclaimer -->
+  <div class="legal-page-hero"><div class="container"><span class="section-label">Legal</span><h1>Disclaimer</h1><p style="color:var(--text-muted);margin-top:12px;">Important limitations and disclosures about our content</p></div></div>
+  <div class="container"><div class="legal-nav"><a href="#" onclick="showPage('privacy')">Privacy Policy</a><a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a><a href="#" onclick="showPage('disclaimer')" class="active">Disclaimer</a></div>
+  <div class="legal-content"><p class="last-updated">Last Updated: January 1, 2026</p>
+    <h2>General Disclaimer</h2><p>The information provided by CleanPro Services is for general informational purposes only. We make no representation or warranty of any kind regarding the accuracy, adequacy, or completeness of any information on the site.</p>
+    <h2>Not Professional Advice</h2><p>Content on this website does not constitute professional, legal, financial, medical, or any other type of advice. Always seek guidance from qualified professionals for your specific situation.</p>
+    <h2>Your Responsibility</h2><p>Use of any information provided is solely at your own risk. CleanPro Services shall not be held responsible for decisions made based on information provided herein.</p>
+    <h2>Earnings Disclaimer</h2><p>Any income or earnings statements are only estimates. There is no assurance you will achieve similar results. Results vary and depend on many factors including individual effort and market conditions.</p>
+    <h2>Third Party Links</h2><p>This website may contain links to third-party websites for convenience only. We accept no responsibility for third-party content or any loss arising from your use of them.</p>
+    <h2>Testimonials Disclaimer</h2><p>Testimonials reflect real experiences of clients who have used our services. However, individual results may vary and are not necessarily representative of all clients.</p>
+    <h2>Affiliate Disclaimer</h2><p>This website may contain affiliate links. If you click and make a purchase, we may receive a commission at no additional cost to you. We only recommend products and services we believe in.</p>
+    <h2>Sponsored Posts</h2><p>Some content may be sponsored and will be clearly marked. Sponsorship does not affect our editorial independence or accuracy of information.</p>
+    <h2>Fair Use Disclaimer</h2><p>This website may use copyrighted material not specifically authorized by the copyright owner for educational and informational purposes, constituting fair use under copyright law.</p>
+    <h2>Changes to the Disclaimer</h2><p>We reserve the right to update this Disclaimer at any time. Continued use of our website constitutes acceptance of the updated Disclaimer.</p>
+    <h2>How to Contact Us</h2><ul><li>Email: <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></li><li>Phone: <a href="tel:+63 917 123 4567">+63 917 123 4567</a></li><li>Address: 123 Bonifacio Ave, Makati City, Metro Manila</li></ul>
+  </div></div>
+</div>
 
-
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
-
-    <!-- NEWSLETTER / LEAD CAPTURE -->
     <div class="footer-newsletter">
-      <div>
-        <h3>Stay in the Loop</h3>
-        <p>Get the latest updates, tips, and insights from CleanPro Services delivered to your inbox.</p>
-      </div>
-      <form class="newsletter-form" onsubmit="return false;">
-        <input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
+      <div><h3>Stay in the Loop</h3><p>Get the latest updates and insights from CleanPro Services delivered to your inbox.</p></div>
+      <form class="newsletter-form" onsubmit="return false;"><input type="email" placeholder="Enter your email address" aria-label="Email for newsletter" /><button type="submit" class="btn btn-primary">Subscribe</button></form>
     </div>
-
-    <!-- MAIN FOOTER COLUMNS -->
     <div class="footer-main">
       <div class="footer-brand">
-        <a href="#" onclick="showPage('home')" class="logo" aria-label="CleanPro Services - Home">CleanPro Services</a>
-        <p>CleanPro Services is a trusted provider of Professional Cleaning Services Manila services. We help businesses grow through expert solutions, proven strategies, and dedicated support.</p>
+        <a href="#" onclick="showPage('home')" class="logo">CleanPro Services</a>
+        <p>CleanPro Services is a trusted provider of Professional Cleaning Services Manila services, helping businesses grow through proven strategies and dedicated support.</p>
         <a href="tel:+63 917 123 4567" style="color:var(--primary);text-decoration:none;font-weight:600;font-size:0.9rem;display:block;margin-bottom:16px;">📞 +63 917 123 4567</a>
         <a href="mailto:rafaelbautista7777@gmail.com" style="color:var(--text-muted);text-decoration:none;font-size:0.88rem;display:block;margin-bottom:16px;">✉️ rafaelbautista7777@gmail.com</a>
         <div class="footer-social">
-          <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">📘</a>
-          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📸</a>
-          <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
-          <a href="#" class="social-link" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">🐦</a>
-          <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">▶️</a>
-          <a href="#" class="social-link" aria-label="Google Maps" target="_blank" rel="noopener noreferrer">📍</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶️</a>
+          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">📍</a>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Navigation</h4>
+      <div class="footer-col"><h4>Navigation</h4>
         <a href="#" onclick="showPage('home')">Home</a>
         <a href="#" onclick="showPage('about')">About Us</a>
         <a href="#" onclick="showPage('services')">Services</a>
         <a href="#" onclick="showPage('contact')">Contact Us</a>
       </div>
-
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="#" onclick="showPage('services')">Deep Cleaning</a><a href="#" onclick="showPage('services')">Regular Maintenance Cleaning</a><a href="#" onclick="showPage('services')">Move-In/Move-Out Cleaning</a><a href="#" onclick="showPage('services')">Office Cleaning</a><a href="#" onclick="showPage('services')">Carpet Cleaning</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Legal</h4>
+      <div class="footer-col"><h4>Services</h4><a href="#" onclick="showPage('services')">Deep Cleaning</a><a href="#" onclick="showPage('services')">Regular Maintenance Cleaning</a><a href="#" onclick="showPage('services')">Move-In/Move-Out Cleaning</a><a href="#" onclick="showPage('services')">Office Cleaning</a><a href="#" onclick="showPage('services')">Carpet Cleaning</a></div>
+      <div class="footer-col"><h4>Legal</h4>
         <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
         <a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a>
         <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
         <a href="#" onclick="showPage('contact')">Contact Us</a>
       </div>
     </div>
-
     <div class="footer-divider"></div>
-
-    <!-- FOOTER BOTTOM -->
     <div class="footer-bottom">
       <p>© 2026 CleanPro Services. All Rights Reserved. | Professional Cleaning Services Manila</p>
       <div class="footer-legal">
@@ -1026,49 +561,26 @@
         <a href="#" onclick="showPage('disclaimer')">Disclaimer</a>
       </div>
     </div>
-
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
 <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-  // ===== PAGE ROUTER =====
   const pages = ['home','about','services','contact','privacy','terms','disclaimer'];
-
   function showPage(page) {
     pages.forEach(p => {
       const el = document.getElementById('page-' + p);
       if (el) el.classList.toggle('active', p === page);
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Update active nav
-    document.querySelectorAll('nav a, .mobile-menu a').forEach(a => {
-      a.style.color = '';
-    });
   }
-
-  // ===== HAMBURGER MENU =====
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
-
-  function closeMobile() {
-    mobileMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-
-  // ===== BACK TO TOP =====
+  hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
   const backBtn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    backBtn.classList.toggle('visible', window.scrollY > 400);
-  });
-
-  // ===== CONTACT FORM =====
+  window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 400); });
   function handleFormSubmit(e) {
     e.preventDefault();
     document.getElementById('form-success').style.display = 'block';
@@ -1076,6 +588,5 @@
     e.target.style.display = 'none';
   }
 </script>
-
 </body>
 </html>
