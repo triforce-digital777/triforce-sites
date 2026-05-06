@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamified Hobbies Philippines - Habitics for Millennials</title>
+  <meta name="description" content="Join Habitics, the gamified hobbies platform in the Philippines designed for millennials and Gen Z. Track tasks and earn XP like in RPG games!" />
+  <!-- GA4 Tracking Code — Insert Google Analytics script here -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@400;700;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #4CAF50;
+      --secondary: #FF9800;
+      --dark: #0f0f1a;
+      --dark2: #1a1a2e;
+      --dark3: #16213e;
+      --text: #e0e0e0;
+      --text-muted: #9090a0;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; }
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(15,15,26,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: 2px; }
+    nav { display: flex; gap: 28px; }
+    nav a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--primary); }
+    .header-cta { background: var(--primary); color: #000; padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.85rem; transition: opacity 0.2s; white-space: nowrap; }
+    .header-cta:hover { opacity: 0.85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-nav { display: none; background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.08); padding: 16px 24px; flex-direction: column; gap: 12px; }
+    .mobile-nav a { color: var(--text); text-decoration: none; font-size: 1rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mobile-nav.open { display: flex; }
+    @media(max-width:768px){ nav { display: none; } .hamburger { display: flex; } .header-cta { display: none; } }
+    #home { background: linear-gradient(135deg, var(--dark) 0%, var(--dark3) 50%, #0d1b2a 100%); padding: 100px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    #home::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(76,175,80,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-block; background: rgba(76,175,80,0.15); border: 1px solid rgba(76,175,80,0.4); color: var(--primary); padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+    #home h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--white); margin-bottom: 20px; line-height: 1.2; }
+    #home h1 span { color: var(--primary); }
+    #home p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 600px; margin: 0 auto 36px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--primary); color: #000; padding: 14px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform 0.2s, opacity 0.2s; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); padding: 12px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: background 0.2s; display: inline-block; }
+    .btn-outline:hover { background: rgba(76,175,80,0.1); }
+    .trust-bar { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 32px 24px; }
+    .trust-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-number { display: block; font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900; color: var(--primary); }
+    .stat-label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label { display: inline-block; background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); color: var(--primary); padding: 4px 14px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.3; }
+    .section-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin-bottom: 48px; }
+    #services { background: var(--dark2); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .service-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px; transition: border-color 0.2s, transform 0.2s; }
+    .service-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+    .service-card h3 { color: var(--primary); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+    #about { background: var(--dark); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 24px; }
+    .about-visual { background: var(--dark3); border: 1px solid rgba(76,175,80,0.2); border-radius: 16px; padding: 40px; text-align: center; }
+    .xp-bar-wrap { background: rgba(255,255,255,0.07); border-radius: 100px; height: 12px; margin: 12px 0; overflow: hidden; }
+    .xp-bar { background: linear-gradient(90deg, var(--primary), var(--secondary)); height: 100%; border-radius: 100px; }
+    .level-label { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--primary); margin-bottom: 8px; }
+    @media(max-width:768px){ .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+    #testimonials { background: var(--dark2); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testimonial { background: var(--dark3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px; }
+    .testimonial p { color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .testimonial cite { color: var(--primary); font-size: 0.85rem; font-weight: 600; font-style: normal; }
+    .cta-section { background: linear-gradient(135deg, var(--dark3), var(--dark2)); text-align: center; border-top: 1px solid rgba(76,175,80,0.15); }
+    #contact { background: var(--dark); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .form-group input, .form-group textarea { background: var(--dark2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px 16px; color: var(--white); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-icon { width: 44px; height: 44px; background: rgba(76,175,80,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
+    .contact-item h4 { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-item a, .contact-item p { color: var(--text); text-decoration: none; font-size: 0.95rem; }
+    .contact-item a:hover { color: var(--primary); }
+    #privacy, #terms, #disclaimer { background: var(--dark); }
+    .legal-content { max-width: 800px; }
+    .legal-content h3 { color: var(--primary); margin: 28px 0 10px; font-size: 1.1rem; }
+    .legal-content p { color: var(--text-muted); margin-bottom: 14px; font-size: 0.93rem; line-height: 1.8; }
+    footer { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.9rem; margin-top: 12px; max-width: 300px; line-height: 1.7; }
+    .footer-col h4 { color: var(--white); font-weight: 700; margin-bottom: 16px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col a { display: block; color: var(--text-muted); text-decoration: none; font-size: 0.88rem; margin-bottom: 10px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--primary); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    @media(max-width:768px){ .footer-top { grid-template-columns: 1fr; gap: 32px; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="#home" class="logo">Habitics</a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="mailto:rafaelbautista7777@gmail.com" class="header-cta">Get Started</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a><a href="#contact">Start Your Adventure Now</a>
+  </div>
+</header>
+<section id="home">
+  <div class="section-inner">
+    <div class="hero-badge">🎮 Gamified hobbies Philippines</div>
+    <h1>Gamified Hobbies for Millennial Filipinos</h1>
+    <p>Unleash your passion with a modern RPG twist! Track tasks, gain XP, and level up your hobbies like never before.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start Your Adventure Now</a>
+      <a href="#services" class="btn-outline">Explore Features</a>
+    </div>
+  </div>
+</section>
+<div class="trust-bar">
+  <div class="trust-inner"><div class="stat"><span class="stat-number">10,000+</span><span class="stat-label">Happy Users</span></div>
+<div class="stat"><span class="stat-number">5</span><span class="stat-label">Years in Development</span></div>
+<div class="stat"><span class="stat-number">100+</span><span class="stat-label">Achievements Available</span></div></div>
+</div>
+<section id="services">
+  <div class="section-inner">
+    <span class="section-label">What We Offer</span>
+    <h2>Level Up With Our Features</h2>
+    <p class="section-sub">Everything you need to gamify your hobbies and crush your daily goals.</p>
+    <div class="services-grid"><div class="service-card"><h3>Task Tracking</h3><p>Keep your daily responsibilities in check with our interactive task trackers. Each completed task earns you XP, helping you level up your productivity.</p></div>
+<div class="service-card"><h3>Achievements System</h3><p>Unlock achievements as you progress on your hobbies and tasks. Celebrate your milestones and motivate yourself to reach new heights.</p></div>
+<div class="service-card"><h3>Interactive Dashboard</h3><p>Immerse yourself in our RPG-style dashboard that keeps your goals front and center. Experience a visually engaging interface that enhances your journey.</p></div>
+<div class="service-card"><h3>Community Challenges</h3><p>Join fun challenges with other users to compete and grow together. Bond with fellow hobbyists and earn exclusive rewards!</p></div>
+<div class="service-card"><h3>Personalized Rewards</h3><p>Choose from a range of rewards as you level up. The more you achieve, the more you can unlock exciting customization for your profile.</p></div>
+<div class="service-card"><h3>Gamified Learning Resources</h3><p>Access a library of engaging content to enhance your skills. Dive into tutorials and guides that make learning a fun adventure.</p></div></div>
+    <div style="text-align:center;margin-top:40px;"><a href="#contact" class="btn-primary">Start Your Adventure Now</a></div>
+  </div>
+</section>
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">About Us</span>
+        <h2>Why Habitics?</h2>
+        <p>At Habitics, we believe that hobbies should be engaging and rewarding. Our platform combines the thrill of gaming with daily task management, allowing Filipino millennials and Gen Z to immerse themselves in their personal growth. With gamified features, users can track their progress, earn experience points, and unlock achievements while fueling their passions. Join a community that turns everyday tasks into exciting quests!</p>
+        <a href="#contact" class="btn-primary">Start Your Adventure Now</a>
+      </div>
+      <div class="about-visual">
+        <div class="level-label">⚔️ LVL 42</div>
+        <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Your Progress</p>
+        <div style="text-align:left;">
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">XP Progress</p>
+          <div class="xp-bar-wrap"><div class="xp-bar" style="width:73%"></div></div>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;margin-top:12px;">Tasks Completed</p>
+          <div class="xp-bar-wrap"><div class="xp-bar" style="width:58%"></div></div>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;margin-top:12px;">Achievements</p>
+          <div class="xp-bar-wrap"><div class="xp-bar" style="width:45%"></div></div>
+        </div>
+        <p style="color:var(--primary);font-weight:700;margin-top:20px;font-size:0.9rem;">🏆 3 Achievements Unlocked!</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testimonials">
+  <div class="section-inner">
+    <span class="section-label">Players Love Us</span>
+    <h2>What Our Users Say</h2>
+    <p class="section-sub">Join thousands of Filipino gamers leveling up their daily lives.</p>
+    <div class="testimonials-grid"><div class="testimonial"><p>"Habitics has transformed how I manage my hobbies! The gamification keeps me motivated and engaged."</p><cite>— Maria Santos, Quezon City</cite></div>
+<div class="testimonial"><p>"As a gamer, this platform speaks to me! I love earning XP while tackling my daily tasks."</p><cite>— Juan Dela Cruz, Cebu</cite></div>
+<div class="testimonial"><p>"Habitics has helped me become more productive. The achievements keep me coming back for more!"</p><cite>— Leah Reyes, Davao City</cite></div></div>
+  </div>
+</section>
+<section class="cta-section" style="padding:80px 24px;">
+  <div class="section-inner">
+    <span class="section-label">Ready to Play?</span>
+    <h2>Start Your Quest Today</h2>
+    <p style="color:var(--text-muted);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">Join the Habitics community and turn your daily habits into epic adventures.</p>
+    <div class="hero-btns" style="justify-content:center;">
+      <a href="#contact" class="btn-primary">Start Your Adventure Now</a>
+      <a href="mailto:rafaelbautista7777@gmail.com" class="btn-outline">Email Us</a>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="section-inner">
+    <span class="section-label">Contact</span>
+    <h2>Get in Touch</h2>
+    <p class="section-sub">Have questions? We'd love to hear from you.</p>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-group"><label for="name">Full Name</label><input id="name" type="text" placeholder="Your full name" /></div>
+        <div class="form-group"><label for="cemail">Email Address</label><input id="cemail" type="email" placeholder="your@email.com" /></div>
+        <div class="form-group"><label for="cphone">Phone Number</label><input id="cphone" type="tel" placeholder="+63 900 000 0000" /></div>
+        <div class="form-group"><label for="msg">Message</label><textarea id="msg" placeholder="Tell us about your quest..."></textarea></div>
+        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">Start Your Adventure Now</button>
+      </form>
+      <div>
+        <div class="contact-info">
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a></div></div>
+          
+          
+        </div>
+        <div style="margin-top:32px;background:#1a1a2e;height:300px;display:flex;align-items:center;justify-content:center;border-radius:12px;border:1px solid rgba(255,255,255,0.07);"><p style="color:#6b7280;">Google Maps — Insert embed here</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="privacy">
+  <div class="section-inner"><span class="section-label">Legal</span><h2>Privacy Policy</h2>
+  <div class="legal-content">
+    <p>Last updated: January 1, 2026. Habitics is committed to protecting your personal information.</p>
+    <h3>Information We Collect</h3><p>We collect name, email, phone, and usage data you provide directly.</p>
+    <h3>How We Use It</h3><p>To provide services, process transactions, send communications, and comply with legal obligations.</p>
+    <h3>Your Rights</h3><p>Contact <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a> to access, update, or delete your data.</p>
+  </div></div>
+</section>
+<section id="terms" style="background:var(--dark2);">
+  <div class="section-inner"><span class="section-label">Legal</span><h2>Terms &amp; Conditions</h2>
+  <div class="legal-content">
+    <p>By using Habitics, you agree to these Terms.</p>
+    <h3>Use of Service</h3><p>Use only for lawful purposes in accordance with these Terms.</p>
+    <h3>Intellectual Property</h3><p>All content is owned by Habitics and protected by law.</p>
+    <h3>Limitation of Liability</h3><p>Habitics is not liable for indirect or consequential damages.</p>
+    <h3>Governing Law</h3><p>Governed by the laws of the Republic of the Philippines.</p>
+  </div></div>
+</section>
+<section id="disclaimer">
+  <div class="section-inner"><span class="section-label">Legal</span><h2>Disclaimer</h2>
+  <div class="legal-content">
+    <p>Information on Habitics is for general informational purposes only. We make no warranty of any kind.</p>
+    <h3>No Professional Advice</h3><p>Content does not constitute professional advice. Seek qualified professionals for specific concerns.</p>
+  </div></div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo">Habitics</a>
+        <p>Gamifying hobbies and daily tasks for Filipino millennials and Gen Z. Level up your life with Habitics.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#disclaimer">Disclaimer</a>
+        <a href="mailto:rafaelbautista7777@gmail.com">rafaelbautista7777@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Habitics. All Rights Reserved. | Gamified hobbies Philippines</p></div>
+  </div>
+</footer>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+</script>
+</body>
+</html>
